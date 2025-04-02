@@ -1,0 +1,156 @@
+:root {
+    --primary-color: #212121;
+    --secondary-color: #ffffff;
+    --text-outline: rgba(255, 255, 255, 0.5);
+    --hover-text-color: #212121;
+    --image-outline: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-heading {
+    position: absolute;
+    font-size: 8vw;
+    font-weight: 700;
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--secondary-color);
+    font-family: 'DrukWide-Bold-Web', 'Helvetica', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.word-line {
+    overflow: hidden;
+    line-height: 1;
+    margin: 0.3em 0;
+}
+
+.word {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.char {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.image-item {
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    max-width: 450px;
+    max-height: 250px;
+    min-width: 250px;
+    min-height: 150px;
+    overflow: visible;
+    transform-style: preserve-3d;
+    will-change: transform;
+    opacity: 0;
+    z-index: 1;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Positioning */
+.image-item:nth-child(1) {
+    top: 20%;
+    left: 14%;
+}
+
+.image-item:nth-child(2) {
+    top: 13%;
+    right: 19%;
+}
+
+.image-item:nth-child(3) {
+    bottom: 0%;
+    left: 17%;
+}
+
+.image-item:nth-child(4) {
+    bottom: 10%;
+    right: 15%;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+/* Hover effects */
+.image-item:hover {
+    z-index: 4;
+}
+
+/* When hovering an image - show only outline on ALL other images */
+.image-item:hover ~ .image-item,
+.image-container:has(.image-item:hover) .image-item:not(:hover) {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--image-outline);
+}
+
+.image-item:hover ~ .image-item img,
+.image-container:has(.image-item:hover) .image-item:not(:hover) img {
+    opacity: 0;
+}
+
+/* Hovered image effects */
+.image-item:hover ~ .hero-heading,
+.image-container:has(.image-item:hover) .hero-heading {
+    color: var(--hover-text-color);
+    text-shadow: 
+        1px 1px 0 var(--text-outline),
+        -1px -1px 0 var(--text-outline),
+        1px -1px 0 var(--text-outline),
+        -1px 1px 0 var(--text-outline);
+}
+
+.image-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2.5rem;
+    }
+}
