@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Set up the animated heading
+    //  animated heading
     const titleText = "DIGITAL EXPERIENCES";
     const titleElement = document.getElementById('animated-heading');
     const words = titleText.split(' ');
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         duration: 1,
         ease: 'power3.out',
         stagger: 0
-    }, 0); // Start at 0 seconds
+    }, 0); 
     
     // Add image pop-up animation to timeline (starts at same time)
     masterTL.to('.image-item', {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         duration: 1,
         ease: 'back.out(1.7)',
         stagger: 0.15
-    }, 0); // Start at 0 seconds
+    }, 0); 
     
    
     

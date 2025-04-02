@@ -120,7 +120,7 @@ body {
     z-index: 4;
 }
 
-/* When hovering an image - show only outline on ALL other images */
+/* When hovering an image */
 .image-item:hover ~ .image-item,
 .image-container:has(.image-item:hover) .image-item:not(:hover) {
     background-color: var(--primary-color);
